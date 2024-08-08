@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1731A5FD2C65100400A4CC21 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1731A5FC2C65100400A4CC21 /* README.md */; };
 		174CBBA32C64DF32003D070F /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBA22C64DF32003D070F /* MinesweeperApp.swift */; };
 		174CBBA52C64DF32003D070F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBA42C64DF32003D070F /* ContentView.swift */; };
 		174CBBA72C64DF33003D070F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174CBBA62C64DF33003D070F /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1731A5FC2C65100400A4CC21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		174CBB9F2C64DF32003D070F /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		174CBBA22C64DF32003D070F /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		174CBBA42C64DF32003D070F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 		174CBB962C64DF32003D070F = {
 			isa = PBXGroup;
 			children = (
+				1731A5FC2C65100400A4CC21 /* README.md */,
 				174CBBA12C64DF32003D070F /* Minesweeper */,
 				174CBBA02C64DF32003D070F /* Products */,
 			);
@@ -136,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1731A5FD2C65100400A4CC21 /* README.md in Resources */,
 				174CBBAA2C64DF33003D070F /* Preview Assets.xcassets in Resources */,
 				174CBBA72C64DF33003D070F /* Assets.xcassets in Resources */,
 			);
