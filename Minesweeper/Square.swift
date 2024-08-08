@@ -23,6 +23,16 @@ class Square: Equatable, Identifiable {
         self.column = column
     }
 
+    static func sample(hasMine: Bool = false, nearbyMines: Int = 0, isFlagged: Bool = false) -> Square {
+        let square = Square(row: 0, column: 0)
+        square.isRevealed = isFlagged ? false : true
+        square.hasMine = hasMine
+        square.nearbyMines = nearbyMines
+        square.isFlagged = isFlagged
+
+        return square
+    }
+
     static func ==(lhs: Square, rhs: Square) -> Bool {
         lhs.id == rhs.id
     }

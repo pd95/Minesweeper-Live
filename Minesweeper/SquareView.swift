@@ -18,6 +18,10 @@ struct SquareView: View {
         }
     }
 
+    var textColor: Color {
+        Color("mine \(square.nearbyMines)")
+    }
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -30,6 +34,7 @@ struct SquareView: View {
                         .shadow(color: .red, radius: 1)
                 } else if square.nearbyMines > 0 {
                     Text(String(square.nearbyMines))
+                        .foregroundStyle(textColor)
                 }
             } else if square.isFlagged {
                 Image(systemName: "exclamationmark.triangle.fill")
@@ -42,25 +47,27 @@ struct SquareView: View {
 }
 
 #Preview {
-
-    var s1 = Square(row: 0, column: 0)
-    var s2 = Square(row: 0, column: 0)
-    s2.isRevealed = true
-    var s3 = Square(row: 0, column: 0)
-    s3.isFlagged = true
-    var s4 = Square(row: 0, column: 0)
-    s4.isRevealed = true
-    s4.hasMine = true
-    var s5 = Square(row: 0, column: 0)
-    s5.isRevealed = true
-    s5.nearbyMines = 3
-
-    return VStack {
-        SquareView(square: s1)
-        SquareView(square: s2)
-        SquareView(square: s3)
-        SquareView(square: s4)
-        SquareView(square: s5)
+    Grid(horizontalSpacing: 2, verticalSpacing: 2) {
+        GridRow {
+            SquareView(square: Square(row: 0, column: 0))
+            SquareView(square: .sample())
+            SquareView(square: .sample(isFlagged: true))
+            SquareView(square: .sample(hasMine: true))
+        }
+        GridRow {
+            SquareView(square: .sample(nearbyMines: 1))
+            SquareView(square: .sample(nearbyMines: 2))
+            SquareView(square: .sample(nearbyMines: 3))
+            SquareView(square: .sample(nearbyMines: 4))
+        }
+        GridRow {
+            SquareView(square: .sample(nearbyMines: 5))
+            SquareView(square: .sample(nearbyMines: 6))
+            SquareView(square: .sample(nearbyMines: 7))
+            SquareView(square: .sample(nearbyMines: 8))
+        }
     }
+    .font(.largeTitle)
+    .preferredColorScheme(.dark)
     .padding()
 }
