@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SquareView: View {
     let square: Square
+    var highlightMine: Bool = false
 
     var color: Color {
         if square.isRevealed {
@@ -35,7 +36,12 @@ struct SquareView: View {
                 } else if square.nearbyMines > 0 {
                     Text(String(square.nearbyMines))
                         .foregroundStyle(textColor)
+                        .bold()
                 }
+            } else if square.hasMine && highlightMine {
+                Text("💣")
+                    .font(.system(size: 48))
+                    .shadow(color: .gray, radius: 1)
             } else if square.isFlagged {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .foregroundStyle(.black, .yellow)
@@ -52,6 +58,7 @@ struct SquareView: View {
             SquareView(square: Square(row: 0, column: 0))
             SquareView(square: .sample())
             SquareView(square: .sample(isFlagged: true))
+            SquareView(square: .sample(hasMine: true), highlightMine: true)
             SquareView(square: .sample(hasMine: true))
         }
         GridRow {

@@ -90,7 +90,7 @@ struct ContentView: View {
                     ForEach(0..<rows.count, id: \.self) { row in
                         GridRow {
                             ForEach(rows[row]) { square in
-                                SquareView(square: square)
+                                SquareView(square: square, highlightMine: gameState == .lost)
                                     .onTapGesture {
                                         select(square)
                                     }
