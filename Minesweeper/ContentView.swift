@@ -11,11 +11,63 @@ enum GameState {
     case waiting, playing, won, lost
 }
 
+enum DifficultyLevel: Hashable, CaseIterable {
+
+    case beginner, intermediate, expert
+
+    var rows: Int {
+        switch self {
+        case .beginner:
+            9
+        case .intermediate:
+            16
+        case .expert:
+            30
+        }
+    }
+
+    var columns: Int {
+        switch self {
+        case .expert:
+            40
+        default:
+            rows
+        }
+    }
+
+    var mines: Int {
+        switch self {
+        case .beginner:
+            10
+        case .intermediate:
+            40
+        case .expert:
+            99
+        }
+    }
+
+    var scaleFactor: Double {
+        return min(1, 20/Double(max(rows, columns)))
+    }
+
+    var description: LocalizedStringKey {
+        switch self {
+        case .beginner:
+            "Beginner"
+        case .intermediate:
+            "Intermediate"
+        case .expert:
+            "Expert"
+        }
+    }
+}
+
 struct ContentView: View {
 
     @State private var rows = [[Square]]()
 
     @State private var gameState = GameState.waiting
+    @State private var difficulty = DifficultyLevel.beginner
     @State private var secondsElapsed = 0
     @State private var isHoveringOverRestart = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -74,6 +126,14 @@ struct ContentView: View {
                         isHoveringOverRestart = hovering
                     }
                     .buttonStyle(.plain)
+                    .contextMenu {
+                        ForEach(DifficultyLevel.allCases, id:\.self) { difficultyLevel in
+                            Button(difficultyLevel.description) {
+                                difficulty = difficultyLevel
+                                reset()
+                            }
+                        }
+                    }
 
                     Text(secondsElapsed.formatted(.number.precision(.integerLength(3))))
                         .fixedSize()
@@ -90,7 +150,7 @@ struct ContentView: View {
                     ForEach(0..<rows.count, id: \.self) { row in
                         GridRow {
                             ForEach(rows[row]) { square in
-                                SquareView(square: square, highlightMine: gameState == .lost)
+                                SquareView(square: square, factor: difficulty.scaleFactor, highlightMine: gameState == .lost)
                                     .onTapGesture {
                                         select(square)
                                     }
@@ -123,23 +183,21 @@ struct ContentView: View {
                 }
             }
         }
+        .navigationTitle(Text("Minesweeper – ")+Text(difficulty.description))
     }
 
     func createGrid() {
         rows.removeAll()
-        for row in 0..<9 {
+        for row in 0..<difficulty.rows {
             var rowSquares = [Square]()
 
-            for column in 0..<9 {
+            for column in 0..<difficulty.columns {
                 let square = Square(row: row, column: column)
-                //square.isRevealed = true
                 rowSquares.append(square)
             }
 
             rows.append(rowSquares)
         }
-
-        //placeMines(avoiding: rows[4][4])
     }
 
     func square(atRow row: Int, column: Int) -> Square? {
@@ -173,7 +231,7 @@ struct ContentView: View {
         let disallowed = getAdjacentSquares(toRow: avoiding.row, column: avoiding.column) + CollectionOfOne(avoiding)
         possibleSquares.removeAll(where: disallowed.contains)
 
-        for square in possibleSquares.shuffled().prefix(10) {
+        for square in possibleSquares.shuffled().prefix(difficulty.mines) {
             square.hasMine = true
         }
 

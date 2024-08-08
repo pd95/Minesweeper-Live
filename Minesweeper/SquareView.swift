@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SquareView: View {
     let square: Square
+    var factor: Double = 1
     var highlightMine: Bool = false
 
     var color: Color {
@@ -31,7 +32,7 @@ struct SquareView: View {
             if square.isRevealed {
                 if square.hasMine {
                     Text("💥")
-                        .font(.system(size: 48))
+                        .font(.system(size: 48*factor))
                         .shadow(color: .red, radius: 1)
                 } else if square.nearbyMines > 0 {
                     Text(String(square.nearbyMines))
@@ -40,7 +41,7 @@ struct SquareView: View {
                 }
             } else if square.hasMine && highlightMine {
                 Text("💣")
-                    .font(.system(size: 48))
+                    .font(.system(size: 48*factor))
                     .shadow(color: .gray, radius: 1)
             } else if square.isFlagged {
                 Image(systemName: "exclamationmark.triangle.fill")
@@ -48,7 +49,7 @@ struct SquareView: View {
                     .shadow(color: .black, radius: 3)
             }
         }
-        .frame(width: 60, height: 60)
+        .frame(width: 60*factor, height: 60*factor)
     }
 }
 
