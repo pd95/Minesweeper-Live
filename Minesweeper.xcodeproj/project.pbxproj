@@ -11,6 +11,9 @@
 		174CBBA52C64DF32003D070F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBA42C64DF32003D070F /* ContentView.swift */; };
 		174CBBA72C64DF33003D070F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174CBBA62C64DF33003D070F /* Assets.xcassets */; };
 		174CBBAA2C64DF33003D070F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174CBBA92C64DF33003D070F /* Preview Assets.xcassets */; };
+		174CBBB22C64DF84003D070F /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBB12C64DF84003D070F /* Square.swift */; };
+		174CBBB42C64E159003D070F /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBB32C64E159003D070F /* SquareView.swift */; };
+		174CBBB62C64F0FA003D070F /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174CBBB52C64F0FA003D070F /* GameOverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		174CBBA62C64DF33003D070F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		174CBBA92C64DF33003D070F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		174CBBAB2C64DF33003D070F /* Minesweeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Minesweeper.entitlements; sourceTree = "<group>"; };
+		174CBBB12C64DF84003D070F /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		174CBBB32C64E159003D070F /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		174CBBB52C64F0FA003D070F /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				174CBBA22C64DF32003D070F /* MinesweeperApp.swift */,
 				174CBBA42C64DF32003D070F /* ContentView.swift */,
+				174CBBB52C64F0FA003D070F /* GameOverView.swift */,
+				174CBBB32C64E159003D070F /* SquareView.swift */,
+				174CBBB12C64DF84003D070F /* Square.swift */,
 				174CBBA62C64DF33003D070F /* Assets.xcassets */,
 				174CBBAB2C64DF33003D070F /* Minesweeper.entitlements */,
 				174CBBA82C64DF33003D070F /* Preview Content */,
@@ -139,8 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174CBBB62C64F0FA003D070F /* GameOverView.swift in Sources */,
+				174CBBB22C64DF84003D070F /* Square.swift in Sources */,
 				174CBBA52C64DF32003D070F /* ContentView.swift in Sources */,
 				174CBBA32C64DF32003D070F /* MinesweeperApp.swift in Sources */,
+				174CBBB42C64E159003D070F /* SquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
